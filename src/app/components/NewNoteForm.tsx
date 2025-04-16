@@ -1,11 +1,17 @@
 'use client'
 import { useState } from 'react'
+import { addNote } from '../actions/noteAction';
 
 const NewNoteForm = () => {
   const [content, setContent] = useState('')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
+
+    if(content.trim() !== '') {
+      await addNote(content)
+      setContent('')
+    }
 
   }
 
