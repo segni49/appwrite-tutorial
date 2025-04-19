@@ -1,19 +1,22 @@
-import NewNoteForm from './components/NewNoteForm'
-import NoteList from './components/NoteList'
-import '../styles/globals.css'
-import { getNotes } from './actions/noteAction';
+import '@/styles/globals.css'
+import Link from 'next/link'
 
 export default async function Home() {
-  const notes: Note[] = await getNotes()
+ 
 
   return (
-    <div>
-      <header>
-        <h1>Note Ninja</h1>
-      </header>
+    <div className='flex flex-col items-between justify-between min-h-screen bg-gray-100'>
+   
 
-      <NoteList initialNotes={notes} />
-      <NewNoteForm />
+      <main className='flex flex-col items-center justify-center'>
+        <h1 className='text-3xl'>Welcome to Note Ninja</h1>
+        <p className='p'>Your personal note-taking app</p>
+          <div className='links'>
+          <Link href='/Login' className='Link'>Login</Link>
+       <Link href='/signup' className='Link'>SignUp</Link>
+     
+          </div>
+       </main> 
     </div>
   );
 }
